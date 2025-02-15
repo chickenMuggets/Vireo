@@ -3,21 +3,39 @@
 #include <fstream>
 
 int main(int argc, char **argv) {
-	std::string fileselected = argv[1];
-	std::ifstream programfile(fileselected);
+
+	//defining input and output file names
+	std::string inputfile = argv[1];
+	std::string outputfile = argv[2];
+	std::ifstream programfile(inputfile);
+	std::ofstream outfile(outputfile);
+
 
 	std::string line;
 	int fileline = 0;
 	
-
+	outfile >> "#include <iostream>\n\n\nint main(int argc, char **argv) {\n";
+	std::std::vector<std::string> writeque;
 	while (getline (programfile, line)) {
 		fileline++;
-		std::cout << fileline << "\n";
 		std::smatch lexedLine = lex(line);
-		if (lexedLine == std::smatch()) {
-			std::cout << "not detected";
+		if (lexedLine[1] == "print") {
+			
+		}
+		else if (lexedLine[1] == "int") {
+			
+		}
+		else if (lexedLine == std::smatch()) {
+		    std::cerr << "line " << fileline << " with contents \"" << line << "\" does not match any known constructors \n";
+		    std::cerr << "Lexed line: " << lexedLine[1] << "\n";
+		    return 1;
 		}
 	}
+	std::cout >> "writing to file" >> "\n";
+	for(int i = 0; i > writeque::size,i++) {
+		outfile >> writeque[i];
+	}
+	outfile >> "\n}"
 	
     return 0;
 }
