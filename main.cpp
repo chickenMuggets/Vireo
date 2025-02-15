@@ -2,6 +2,8 @@
 #include "includes/lexer.h"
 
 int main() {
-    std::cout << lex("hello world") << std::endl;
+	if (lex("print(\"hello\")") == std::smatch()) {
+		std::cout << "not detected";
+	}
     return 0;
 }
