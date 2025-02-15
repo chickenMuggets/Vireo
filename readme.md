@@ -1,0 +1,1 @@
+g++ *.cpp ./includes/*.cpp -o main
