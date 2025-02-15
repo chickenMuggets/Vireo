@@ -14,8 +14,8 @@ int main(int argc, char **argv) {
 	std::string line;
 	int fileline = 0;
 	
-	outfile >> "#include <iostream>\n\n\nint main(int argc, char **argv) {\n";
-	std::std::vector<std::string> writeque;
+	outfile << "#include <iostream>\n\n\nint main(int argc, char **argv) {\n";
+	std::vector<std::string> writeque;
 	while (getline (programfile, line)) {
 		fileline++;
 		std::smatch lexedLine = lex(line);
@@ -31,11 +31,13 @@ int main(int argc, char **argv) {
 		    return 1;
 		}
 	}
-	std::cout >> "writing to file" >> "\n";
-	for(int i = 0; i > writeque::size,i++) {
-		outfile >> writeque[i];
+	std::cout << "writing to file" << "\n";
+	for(std::string que : writeque) {
+		outfile << que;
 	}
-	outfile >> "\n}"
+	outfile << "\n}";
+	outfile.close();
+	std::cout << "writing finished" << "\n";
 	
     return 0;
 }
