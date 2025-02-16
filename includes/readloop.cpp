@@ -11,11 +11,16 @@ std::vector<std::string> readloopfile(std::string filetoread) {
 		fileline++;
 		std::smatch lexedLine = lex(line);
 		if (lexedLine[1] == "print") {
-			 writeque.push_back("std::cout << \"" + line.substr(6) + "\" << std::endl;\n"); 
+			if (lexedLine[3].str() == "=") {
+			 writeque.push_back("std::cout << \"" + lexedLine[2].str() + "\" << std::endl;\n"); 
+			}
 		}
+
+
 		else if (lexedLine[1] == "int") {
-			writeque.push_back("int " + line.substr(4) + ";\n");
+			writeque.push_back("int " + lexedLine[2].str() + ";\n");
 		}
+
 		else {
 		    std::cerr << "Line " << fileline << " with contents \"" << line << "\" does not match any known constructors.\n";
 		}

@@ -30,7 +30,7 @@ int main(int argc, char **argv) {
     std::vector<std::string> writeque = readloopfile(inputfile);
 
 	std::cout << "writing to file" << "\n";
-	
+
 	for(std::string que : writeque) {
 		outfile << que;
 	}
