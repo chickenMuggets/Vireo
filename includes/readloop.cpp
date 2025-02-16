@@ -26,6 +26,5 @@ std::vector<std::string> readloopfile(std::string filetoread) {
 		}
 		std::cout << "Processed line " << fileline << "\n";
 	}
-	writeque.push_back("}"); 
 	return writeque;
 }
