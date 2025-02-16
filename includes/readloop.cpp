@@ -6,7 +6,7 @@ std::vector<std::string> readloopfile(std::string filetoread) {
     int fileline = 0;
     std::vector<std::string> writeque;
     std::ifstream readingfile(filetoread);
-
+    writeque.push_back("#include <iostream>\n\n\nint() main {\n");
 	while (getline (readingfile, line)) {
 		fileline++;
 		std::smatch lexedLine = lex(line);
@@ -21,5 +21,6 @@ std::vector<std::string> readloopfile(std::string filetoread) {
 		}
 		std::cout << "Processed line " << fileline << "\n";
 	}
+	writeque.push_back("}"); 
 	return writeque;
 }
